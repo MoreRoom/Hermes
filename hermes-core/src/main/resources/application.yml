@@ -1,0 +1,26 @@
+server:
+  port: 18083
+  tomcat: uri-encoding:UTF-8
+
+spring:
+  application:
+    name: merchant-gateway
+  http:
+    encoding:
+      force: true
+      enabled: true
+#  jackson:
+#    date-format: yyyy-MM-dd HH:mm:ss
+#    time-zone: GMT+8
+
+
+logging:
+  config: classpath:log4j2.xml
+
+security:
+  basic:
+    enabled: false
+
+#endpoints:
+#  shutdown:
+#    enabled: true    #开启优雅关闭方式

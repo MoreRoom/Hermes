@@ -1,0 +1,108 @@
+<!--/**
+    修改了 metro.js 才得以实现的
+    3357行左右
+**/-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link href="../../metro/css/metro-all.css?ver=@@b-version" rel="stylesheet">
+    <link href="../../css/descktop.css" rel="stylesheet">
+    <title>Desktop</title>
+</head>
+<body>
+<div class="desktop">
+    <div class="window-area bg-dark"></div>
+    <div class="task-bar">
+        <div class="task-bar-section">
+            <button class="task-bar-item" id="start-menu-toggle"><span class="mif-windows"></span></button>
+            <div class="start-menu" data-role="dropdown" data-toggle-element="#start-menu-toggle">
+                <div class="start-menu-inner h-100">
+                    <div class="explorer">
+                        <ul class="v-menu w-100 bg-brandColor2 fg-white">
+                            <!--<li><a onclick="createWindowYoutube()">Youtube window</a></li>-->
+                            <!--<li><a onclick="createWindow()">New window</a></li>-->
+                            <!--<li><a onclick="createWindowModal()">Modal window</a></li>-->
+                            <li class="menu-title">数据源管理</li>
+                            <li><a onclick="createNewDataSource()">新建</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="task-bar-section tasks"></div>
+    </div>
+</div>
+
+<script src="../../js/jquery-3.3.1.min.js"></script>
+<script src="../../metro/js/metro.js"></script>
+<script src="../../js/desktop.js"></script>
+<script>
+    var w_icons = [
+        'rocket', 'apps', 'cog', 'anchor'
+    ];
+    var w_titles = [
+        'rocket', 'apps', 'cog', 'anchor'
+    ];
+
+    function createNewDataSource() {
+        Desktop.createWindow({
+            width: 500,
+            icon: "<span class='mif-youtube'></span>",
+            title: "Youtube video",
+            content: "direct:/hello"
+
+        });
+    }
+
+    function createWindow() {
+        var index = Metro.utils.random(0, 3);
+        Desktop.createWindow({
+            width: 300,
+            icon: "<span class='mif-" + w_icons[index] + "'></span>",
+            title: w_titles[index],
+            content: "https://localhost:8080/demo"
+        });
+    }
+
+    function createWindowModal() {
+        Desktop.createWindow({
+            width: 300,
+            icon: "<span class='mif-cogs'></span>",
+            title: "Modal window",
+            content: "<div class='p-2'>This is desktop demo created with Metro 4 Components Library</div>",
+            overlay: true,
+            //overlayColor: "transparent",
+            modal: true,
+            place: "center",
+            onShow: function (win) {
+                win.addClass("ani-swoopInTop");
+                setTimeout(function () {
+                    win.removeClass("ani-swoopInTop");
+                }, 1000);
+            },
+            onClose: function (win) {
+                win.addClass("ani-swoopOutTop");
+            }
+        });
+    }
+
+    function createWindowYoutube() {
+        Metro.window.create()
+        Desktop.createWindow({
+            width: 500,
+            icon: "<span class='mif-youtube'></span>",
+            title: "Youtube video",
+            content: "https://youtu.be/S9MeTn1i72g",
+            clsContent: "bg-dark"
+        });
+    }
+
+</script>
+<!-- ads-script -->
+</body>
+</html>

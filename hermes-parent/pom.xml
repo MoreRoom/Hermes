@@ -25,8 +25,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <swagger.version>2.4.0</swagger.version>
-        <springframework-cloud.version>1.4.0.RELEASE</springframework-cloud.version>
-        <springframework.version>4.3.7.RELEASE</springframework.version>
     </properties>
 
 

@@ -2,6 +2,9 @@ package com.hermes.datasource.manage.controller;
 
 import com.hermes.core.datasource.entity.DataSourceInfoEntity;
 import com.hermes.core.datasource.service.IDataSourceInfoService;
+import com.hermes.datasource.manage.BeanA;
+import com.hermes.datasource.manage.BeanB;
+import com.hermes.datasource.manage.BeanC;
 import com.hermes.datasource.manage.vo.DataSourceInfoVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
@@ -25,8 +28,18 @@ public class DataSourceController {
     @Resource
     private IDataSourceInfoService dataSourceInfoService;
 
+    @Resource
+    private BeanA beanA;
+    @Resource
+    private BeanB beanB;
+    @Resource
+    private BeanC beanC;
+
     @RequestMapping("/manage")
     public String toPage_Manage() {
+        beanA.showComponent();
+        beanB.showComponent();
+        beanC.showComponent();
 
         return "datasource/datasource_manage";
     }

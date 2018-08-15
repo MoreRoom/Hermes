@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hermes.core.market.dao.IActiveDao">
+
+    <resultMap type="com.hermes.core.market.entity.ActiveEntity" id="activeEntity">
+        <id property="id" column="ID"/>
+        <result property="createTime" column="CREATE_TIME"/>
+        <result property="modifyTime" column="MODIFY_TIME"/>
+        <result property="address" column="ADDRESS"/>
+        <result property="port" column="PORT_"/>
+        <result property="username" column="USERNAME"/>
+        <result property="password" column="PASSWORD_"/>
+    </resultMap>
+
+    <insert id="insertNewActive" parameterType="com.hermes.core.market.entity.ActiveEntity"
+            keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO
+            tbl_marketing_active
+            (
+                VERSION,
+                CREATE_TIME,
+                LAST_MODIFY_TIME,
+                ACTIVE_BEGIN_TIME,
+                ACTIVE_END_TIME,
+                ACTIVE_NAME,
+                ACTIVE_STATUS,
+                ACTIVE_NO
+            )
+        VALUES
+            (
+                0,
+                current_timestamp,
+                current_timestamp,
+                current_timestamp,
+                current_timestamp,
+                #{activeName,jdbcType=VARCHAR},
+                #{activeStatus,jdbcType=VARCHAR},
+                #{activeNo,jdbcType=VARCHAR}
+            )
+    </insert>
+
+
+</mapper>
